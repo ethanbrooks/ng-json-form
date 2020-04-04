@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   name = 'Angular 6';
   jsonFormOptions = {
-    loadExternalAssets: false,
+    loadExternalAssets: true,
   };
 
 
