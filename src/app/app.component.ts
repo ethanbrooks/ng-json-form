@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 //import { jsonSchema } from './jsonSchema';
 
 @Component({
@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
       "description" : "the end date of the Conference Room"
     }
   };
-
+  constructor(private el: ElementRef) {}
 
   submittedFormData;
   ngOnInit() {
@@ -39,6 +39,13 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit(data: any) {
+    console.log('data', JSON.stringify(data) );
+    this.el.nativeElement
+      .dispatchEvent(new CustomEvent('myCustomEvent', {
+        detail: data,
+        bubbles: true
+      }));
+
     this.submittedFormData = data;
   }
 
